@@ -1,21 +1,3 @@
-/**
- * YouTube Downloader — Vercel Serverless Function
- * Personal use only. Respect YouTube ToS and copyright.
- *
- * SETUP:
- *   1. vercel env add YT_COOKIE        ← paste your cookie string
- *   2. vercel deploy
- *
- * Endpoints (all via /api?path=<route>):
- *   GET /api?path=health
- *   GET /api?path=info&url=<youtube_url>
- *   GET /api?path=formats&url=<youtube_url>
- *   GET /api?path=download&url=<youtube_url>&type=video&quality=720
- *   GET /api?path=download&url=<youtube_url>&type=audio
- *   GET /api?path=playlist&url=<playlist_url>&limit=50
- *   GET /api?path=debug&url=<youtube_url>
- */
-
 const YT_BASE        = 'https://www.youtube.com';
 const INNERTUBE_BASE = `${YT_BASE}/youtubei/v1`;
 
