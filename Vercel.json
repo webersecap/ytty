@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/health",            "destination": "/api?path=health" },
+    { "source": "/info",              "destination": "/api?path=info" },
+    { "source": "/formats",           "destination": "/api?path=formats" },
+    { "source": "/download",          "destination": "/api?path=download" },
+    { "source": "/playlist",          "destination": "/api?path=playlist" },
+    { "source": "/debug",             "destination": "/api?path=debug" }
+  ]
+}
