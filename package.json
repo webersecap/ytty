@@ -1,0 +1,13 @@
+{
+  "name": "ytty",
+  "version": "1.0.0",
+  "description": "Personal YouTube downloader — Vercel serverless",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "devDependencies": {
+    "vercel": "^37.0.0"
+  },
+  "license": "MIT"
+}
