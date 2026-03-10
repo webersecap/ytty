@@ -10,7 +10,6 @@ const WEB_VERSION       = '2.20241126.01.00';
 const WEB_UA            = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 const WEB_CLIENT_ID     = '1';
 
-// ─── Auth ─────────────────────────────────────────────────────────────────────
 
 async function generateSapisidHash(cookie) {
   try {
