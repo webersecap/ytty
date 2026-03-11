@@ -1,11 +1,10 @@
 {
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
-    { "source": "/health",   "destination": "/api/index?path=health" },
-    { "source": "/info",     "destination": "/api/index?path=info" },
-    { "source": "/formats",  "destination": "/api/index?path=formats" },
-    { "source": "/download", "destination": "/api/index?path=download" },
-    { "source": "/playlist", "destination": "/api/index?path=playlist" },
-    { "source": "/debug",    "destination": "/api/index?path=debug" },
-    { "source": "/",         "destination": "/api/index?path=health" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
