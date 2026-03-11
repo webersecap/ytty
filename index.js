@@ -362,7 +362,9 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return sendError(res, 'Only GET requests supported', 405);
 
   const cookie = process.env.YT_COOKIE ?? null;
-  const path   = req.query.path ?? 'health';
+  // Support both ?path=info and clean URLs like /info via rewrites
+  const urlPathname = (req.url ?? '').split('?')[0].replace(/^\/api\/index\/?/, '').replace(/^\//, '');
+  const path = req.query.path ?? urlPathname || 'health';
 
   if (!req.query.url && path !== 'health') {
     return sendError(res, 'Missing ?url= parameter');
