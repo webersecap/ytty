@@ -1,10 +1,11 @@
 {
   "rewrites": [
-    { "source": "/health",            "destination": "/api?path=health" },
-    { "source": "/info",              "destination": "/api?path=info" },
-    { "source": "/formats",           "destination": "/api?path=formats" },
-    { "source": "/download",          "destination": "/api?path=download" },
-    { "source": "/playlist",          "destination": "/api?path=playlist" },
-    { "source": "/debug",             "destination": "/api?path=debug" }
+    { "source": "/health",   "destination": "/api/index?path=health" },
+    { "source": "/info",     "destination": "/api/index?path=info" },
+    { "source": "/formats",  "destination": "/api/index?path=formats" },
+    { "source": "/download", "destination": "/api/index?path=download" },
+    { "source": "/playlist", "destination": "/api/index?path=playlist" },
+    { "source": "/debug",    "destination": "/api/index?path=debug" },
+    { "source": "/",         "destination": "/api/index?path=health" }
   ]
 }
