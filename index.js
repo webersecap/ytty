@@ -1,3 +1,21 @@
+/**
+ * YouTube Downloader — Vercel Serverless Function
+ * Personal use only. Respect YouTube ToS and copyright.
+ *
+ * SETUP:
+ *   1. vercel env add YT_COOKIE        ← paste your cookie string
+ *   2. vercel deploy
+ *
+ * Endpoints (all via /api?path=<route>):
+ *   GET /api?path=health
+ *   GET /api?path=info&url=<youtube_url>
+ *   GET /api?path=formats&url=<youtube_url>
+ *   GET /api?path=download&url=<youtube_url>&type=video&quality=720
+ *   GET /api?path=download&url=<youtube_url>&type=audio
+ *   GET /api?path=playlist&url=<playlist_url>&limit=50
+ *   GET /api?path=debug&url=<youtube_url>
+ */
+
 const YT_BASE        = 'https://www.youtube.com';
 const INNERTUBE_BASE = `${YT_BASE}/youtubei/v1`;
 
@@ -10,6 +28,7 @@ const WEB_VERSION       = '2.20241126.01.00';
 const WEB_UA            = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 const WEB_CLIENT_ID     = '1';
 
+// ─── Auth ─────────────────────────────────────────────────────────────────────
 
 async function generateSapisidHash(cookie) {
   try {
@@ -19,7 +38,7 @@ async function generateSapisidHash(cookie) {
     if (!sapisid) return null;
 
     const ts     = Math.floor(Date.now() / 1000);
-    const crypto = await import('node:crypto');
+    const crypto = require('node:crypto');
     const hash   = crypto.createHash('sha1')
       .update(`${ts} ${sapisid} ${YT_BASE}`)
       .digest('hex');
@@ -331,7 +350,7 @@ async function handleDebug(req, res, cookie) {
 
 // ─── Main Handler ─────────────────────────────────────────────────────────────
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS preflight
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
